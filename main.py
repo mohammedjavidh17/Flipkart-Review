@@ -1,4 +1,3 @@
-from turtle import Turtle
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -31,7 +30,7 @@ TempList = []
 #get review from each page
 for Link in lnks:
     Link = "https://www.flipkart.com"+Link
-    rtl = requests.get(Link).text
+    rtl = requests.get(Link, timeout=10).text
     spl = BeautifulSoup(rtl, 'lxml')
     dta = spl.find_all('div', class_ = "_27M-vq")[1:]
     for x in dta:
